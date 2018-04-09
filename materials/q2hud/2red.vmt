@@ -1,0 +1,6 @@
+"UnlitGeneric"
+{
+   "$basetexture" "q2hud/2red"
+   "$alphatest" "1"
+   "vertexalpha" "0"
+}
