@@ -42,7 +42,7 @@ if CLIENT then
         end
       end
 
-      if LocalPlayer():GetRagdollEntity() ~= nil then
+      if LocalPlayer():GetRagdollEntity() ~= nil and IsValid(LocalPlayer():GetRagdollEntity()) then
         LocalPlayer():GetRagdollEntity():SetNoDraw(true);
       end
     else

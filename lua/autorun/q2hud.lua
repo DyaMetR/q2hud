@@ -1,8 +1,8 @@
 --[[------------
   Q U A K E II
 Heads Up Display
-  Version 1.1.2
-    07/04/18
+  Version 1.1.4
+    17/06/20
 
 By DyaMetR
 ]]--------------
@@ -48,8 +48,6 @@ if CLIENT then
       else
         return not (hide[name] ~= nil);
       end
-    else
-      return true;
     end
   end);
 
