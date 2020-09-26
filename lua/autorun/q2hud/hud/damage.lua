@@ -12,6 +12,19 @@ if CLIENT then
   local amount = 0;
   local accum = 0;
   local color = Color(255,255,255);
+  local DAMAGE_COLOUR = Color(110, 0, 0);
+  local ARMOUR_COLOUR = Color(60, 60, 60);
+  local tab = {
+    [ "$pp_colour_addr" ] = 0,
+    [ "$pp_colour_addg" ] = 0,
+    [ "$pp_colour_addb" ] = 0,
+    [ "$pp_colour_brightness" ] = 0,
+    [ "$pp_colour_contrast" ] = 1,
+    [ "$pp_colour_colour" ] = 1,
+    [ "$pp_colour_mulr" ] = 0,
+    [ "$pp_colour_mulg" ] = 0,
+    [ "$pp_colour_mulb" ] = 0
+  };
 
   local add = 0.1;
   local delay = 0.1;
@@ -36,10 +49,10 @@ if CLIENT then
     if (lastAP ~= ap) or (lastHP ~= hp) then
 
       if (ap > 0) then
-        color = Color(60,60,60);
+        color = ARMOUR_COLOUR;
         DamageEffect((lastAP - ap) + (lastHP - hp));
       else
-        color = Color(110,0,0);
+        color = DAMAGE_COLOUR;
         DamageEffect(lastHP - hp);
       end
 
@@ -61,17 +74,10 @@ if CLIENT then
       end
 
       draw.RoundedBox(0, x, y, w, h, Color(color.r, color.g, color.b, 150*amount));
-      local tab = {
-      	[ "$pp_colour_addr" ] = (color.r/255)*amount,
-      	[ "$pp_colour_addg" ] = (color.g/255)*amount,
-      	[ "$pp_colour_addb" ] = (color.b/255)*amount,
-      	[ "$pp_colour_brightness" ] = 0,
-      	[ "$pp_colour_contrast" ] = 1,
-      	[ "$pp_colour_colour" ] = 1,
-      	[ "$pp_colour_mulr" ] = 0,
-      	[ "$pp_colour_mulg" ] = 0,
-      	[ "$pp_colour_mulb" ] = 0
-      };
+
+      tab[ "$pp_colour_addr" ] = (color.r/255)*amount;
+      tab[ "$pp_colour_addg" ] = (color.g/255)*amount;
+      tab[ "$pp_colour_addb" ] = (color.b/255)*amount;
       DrawColorModify( tab );
     end
   end

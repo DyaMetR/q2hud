@@ -1,8 +1,8 @@
 --[[------------
   Q U A K E II
 Heads Up Display
-  Version 1.1.4
-    17/06/20
+  Version 1.1.5
+    26/09/20
 
 By DyaMetR
 ]]--------------

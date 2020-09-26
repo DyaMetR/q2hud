@@ -18,6 +18,17 @@ if CLIENT then
   local anim = false;
   local tick = 0;
   local timer = 0;
+  local tab = {
+    [ "$pp_colour_addr" ] = 0,
+    [ "$pp_colour_addg" ] = 0,
+    [ "$pp_colour_addb" ] = 0,
+    [ "$pp_colour_brightness" ] = 0,
+    [ "$pp_colour_contrast" ] = 1,
+    [ "$pp_colour_colour" ] = 1,
+    [ "$pp_colour_mulr" ] = 0,
+    [ "$pp_colour_mulg" ] = 0,
+    [ "$pp_colour_mulb" ] = 0
+  };
 
   -- Methods
   --[[
@@ -55,17 +66,9 @@ if CLIENT then
 
       draw.RoundedBox(0, 0, 0, ScrW(), ScrH(), Color(color.r,color.g,color.b, 110*amount));
 
-      local tab = {
-        [ "$pp_colour_addr" ] = (color.r/255)*amount,
-        [ "$pp_colour_addg" ] = (color.g/255)*amount,
-        [ "$pp_colour_addb" ] = (color.b/255)*amount,
-        [ "$pp_colour_brightness" ] = 0,
-        [ "$pp_colour_contrast" ] = 1,
-        [ "$pp_colour_colour" ] = 1,
-        [ "$pp_colour_mulr" ] = 0,
-        [ "$pp_colour_mulg" ] = 0,
-        [ "$pp_colour_mulb" ] = 0
-      };
+      tab[ "$pp_colour_addr" ] = (color.r/255)*amount;
+      tab[ "$pp_colour_addg" ] = (color.g/255)*amount;
+      tab[ "$pp_colour_addb" ] = (color.b/255)*amount;
       DrawColorModify( tab );
     end
   end

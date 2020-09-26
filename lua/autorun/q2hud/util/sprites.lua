@@ -6,7 +6,8 @@ Heads Up Display
 
 if CLIENT then
   -- Parameters
-  local path = "q2hud/"; -- The folder where the materials are stored
+  local COLOUR = Color(255, 255, 255);
+  local PATH = "q2hud/"; -- The folder where the materials are stored
   Q2HUD.Sprites = {}; -- The sprites list
 
   -- Methods
@@ -29,7 +30,7 @@ if CLIENT then
   ]]
   function Q2HUD:AddSprite(id, w, h, file)
     file = file or id;
-    self.Sprites[id] = {w = w, h = h, file = file};
+    self.Sprites[id] = {w = w, h = h, file = surface.GetTextureID(PATH .. file)};
   end
 
   --[[
@@ -53,8 +54,8 @@ if CLIENT then
     surface.SetDrawColor(Color(255,255,255)); -- White color
     surface.DrawTexturedRect(x + xOffset, y + yOffset, w * scale, h * scale); -- Draw the desired sprite]]
     draw.TexturedQuad( {
-    	texture = surface.GetTextureID(path..file),
-    	color	= Color( 255, 255, 255, 255 ),
+    	texture = file,
+    	color	= COLOUR,
     	x 	= x + xOffset,
     	y 	= y + yOffset,
     	w 	= w * scale,

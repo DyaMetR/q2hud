@@ -6,6 +6,7 @@ Heads Up Display
 
 if CLIENT then
   -- Parameters
+  local PISTOL_HOLDTYPES = {"pistol", "revolver", "duel"};
   Q2HUD.WeaponModels = {}; -- A list of weapon models
   Q2HUD.WeaponClasses = {}; -- A list of weapon classes
   Q2HUD.QuakeWeapons = {}; -- A list of quake weapon icons
@@ -97,7 +98,7 @@ if CLIENT then
     local icon = "";
 
     if icon == "" then
-      if (table.HasValue({"pistol", "revolver", "duel"}, holdtype)) then
+      if (table.HasValue(PISTOL_HOLDTYPES, holdtype)) then
         icon = self.QuakeWeapons.pistol;
       else
         if Q2HUD.WeaponByAmmo[game.GetAmmoName(ammotype)] ~= nil then
