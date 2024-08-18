@@ -6,7 +6,6 @@ Heads Up Display
 
 if CLIENT then
   -- Parameters
-  local COLOUR = Color(255, 255, 255);
   local PATH = "q2hud/"; -- The folder where the materials are stored
   Q2HUD.Sprites = {}; -- The sprites list
 
@@ -28,9 +27,9 @@ if CLIENT then
     @param {string} file
     @void
   ]]
-  function Q2HUD:AddSprite(id, w, h, file)
-    file = file or id;
-    self.Sprites[id] = {w = w, h = h, file = surface.GetTextureID(PATH .. file)};
+  function Q2HUD:AddSprite(id, w, h, texture)
+    texture = texture or id;
+    self.Sprites[id] = {w = w, h = h, texture = surface.GetTextureID(PATH .. texture)};
   end
 
   --[[
@@ -44,23 +43,12 @@ if CLIENT then
     @param {number} scale
     @void
   ]]
-  function Q2HUD:DrawSpriteRect(file, x, y, w, h, align, scale)
+  function Q2HUD:DrawSpriteRect(texture, x, y, w, h, align, scale)
     align = align or 0; -- Alignment
     scale = scale or 1; -- Scale
-    local xOffset = w * align * scale; -- x offset based on alignment and scale
-    local yOffset = -h * scale; -- y offset based on scale
-
-    --[[surface.SetMaterial(Material(path..file..ext, "$smooth = 0")); -- Load the texture
-    surface.SetDrawColor(Color(255,255,255)); -- White color
-    surface.DrawTexturedRect(x + xOffset, y + yOffset, w * scale, h * scale); -- Draw the desired sprite]]
-    draw.TexturedQuad( {
-    	texture = file,
-    	color	= COLOUR,
-    	x 	= x + xOffset,
-    	y 	= y + yOffset,
-    	w 	= w * scale,
-    	h 	= h * scale
-    } );
+    surface.SetTexture(texture);
+    surface.SetDrawColor(255, 255, 255);
+    surface.DrawTexturedRect(x + math.Round(w * align * scale), y + math.Round(-h * scale), math.Round(w * scale), math.Round(h * scale))
   end
 
   --[[
@@ -76,7 +64,7 @@ if CLIENT then
     align = align or 0; -- Alignment
     scale = scale or 1; -- Scale
     local spr = self:GetSprite(id);
-    self:DrawSpriteRect(spr.file, x, y, spr.w, spr.h, align, scale);
+    self:DrawSpriteRect(spr.texture, x, y, spr.w, spr.h, align, scale);
   end
 
 end
