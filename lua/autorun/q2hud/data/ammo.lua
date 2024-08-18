@@ -5,7 +5,7 @@ Heads Up Display
 ]]--------------
 
 if CLIENT then
-  -- Default half-life ammo
+  -- Default Half-Life 2 ammo
   Q2HUD:AddAmmoIcon("Pistol", "hammo0");
   Q2HUD:AddAmmoIcon("357", "hammo1");
   Q2HUD:AddAmmoIcon("SMG1", "hammo2");
@@ -21,5 +21,4 @@ if CLIENT then
   -- Quake II SWEPs support
   Q2HUD:AddAmmoIcon("Cells", "qammo5");
   Q2HUD:AddAmmoIcon("Slugs", "qammo4");
-
 end

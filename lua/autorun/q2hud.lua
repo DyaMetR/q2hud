@@ -1,8 +1,8 @@
 --[[------------
   Q U A K E II
 Heads Up Display
-  Version 1.1.5
-    26/09/20
+  Version 1.1.6
+    18/08/24
 
 By DyaMetR
 ]]--------------
@@ -52,55 +52,51 @@ if CLIENT then
   end);
 
   -- Menu
-  local function menuElements( panel )
-    panel:ClearControls()
+  hook.Add( "PopulateToolMenu", "q2hud_menu", function()
+    spawnmenu.AddToolMenuOption( "Utilities", "Quake II HUD", "q2hud", "#spawnmenu.utilities.settings", nil, nil, function(panel)
+      panel:ClearControls();
 
-    panel:AddControl( "Label" , {
-      Text = "Quake II HUD Settings"
-    } );
+      panel:AddControl( "Label" , {
+        Text = "Quake II HUD Settings"
+      } );
 
-    panel:AddControl( "CheckBox", {
-      Label = "Enabled",
-      Command = "q2hud_enabled"}
-    );
+      panel:AddControl( "CheckBox", {
+        Label = "Enabled",
+        Command = "q2hud_enabled"
+      } );
 
-    panel:AddControl( "Slider", {
-      Label = "HUD Scale",
-      Type = "Float",
-      Min = "0",
-      Max = "10",
-      Command = "q2hud_scale"}
-    );
+      panel:AddControl( "Slider", {
+        Label = "HUD Scale",
+        Type = "Float",
+        Min = "0",
+        Max = "10",
+        Command = "q2hud_scale"
+      } );
 
-    panel:AddControl( "CheckBox", {
-      Label = "Show current weapon clip ammo",
-      Command = "q2hud_showclip"}
-    );
+      panel:AddControl( "CheckBox", {
+        Label = "Show current weapon clip ammo",
+        Command = "q2hud_showclip"
+      } );
 
-    panel:AddControl( "CheckBox", {
-      Label = "Enable death screen",
-      Command = "q2hud_deathscreen"}
-    );
+      panel:AddControl( "CheckBox", {
+        Label = "Enable death screen",
+        Command = "q2hud_deathscreen"
+      } );
 
-    panel:AddControl( "CheckBox", {
-      Label = "Show item pickup effect",
-      Command = "q2hud_showpickup"}
-    );
+      panel:AddControl( "CheckBox", {
+        Label = "Show item pickup effect",
+        Command = "q2hud_showpickup"
+      } );
 
-    panel:AddControl( "CheckBox", {
-      Label = "Show damage effect",
-      Command = "q2hud_showdamage"}
-    );
+      panel:AddControl( "CheckBox", {
+        Label = "Show damage effect",
+        Command = "q2hud_showdamage"
+      } );
 
-    panel:AddControl( "CheckBox", {
-      Label = "Show frag counter",
-      Command = "q2hud_showfrags"}
-    );
-  end
-
-  local function createMenu()
-    spawnmenu.AddToolMenuOption( "Options", "DyaMetR", "Q2HUDSETTINGS", "Quake II HUD", "", "", menuElements )
-  end
-  hook.Add( "PopulateToolMenu", "q2hud_menu", createMenu );
-
+      panel:AddControl( "CheckBox", {
+        Label = "Show frag counter",
+        Command = "q2hud_showfrags"
+      } );
+    end)
+  end);
 end
