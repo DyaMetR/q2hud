@@ -8,7 +8,7 @@ Heads Up Display
 if CLIENT then
   local size = 73;
   local function AmmoPanel()
-    if Q2HUD.Config:ShouldShowClip() == 0 or (IsValid(LocalPlayer():GetActiveWeapon()) and LocalPlayer():GetActiveWeapon() ~= nil and LocalPlayer():GetActiveWeapon():Clip1() <= -1) then return end;
+    if not Q2HUD.Config:ShouldShowClip() or (IsValid(LocalPlayer():GetActiveWeapon()) and LocalPlayer():GetActiveWeapon() ~= nil and LocalPlayer():GetActiveWeapon():Clip1() <= -1) then return end;
     local scale = Q2HUD.Config:GetHUDScale();
     local x, y = (ScrW()/2) - 12*scale, ScrH() - 4*scale;
     local x2 = (ScrW()/2) + (28 + 15 + size*2)*scale;

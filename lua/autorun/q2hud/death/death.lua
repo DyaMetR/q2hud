@@ -18,7 +18,7 @@ if CLIENT then
 
   -- Hooks
   local function Death()
-    if (Q2HUD.Config:DeathScreenEnabled() == 0) or  (Q2HUD.Config:IsEnabled() == 0) then return end;
+    if (not Q2HUD.Config:IsEnabled()) or (not Q2HUD.Config:DeathScreenEnabled()) then return end;
     if not LocalPlayer():Alive() then
       local tr = util.TraceLine( {
       	start = LocalPlayer():GetPos(),
@@ -55,7 +55,7 @@ if CLIENT then
   hook.Add("Think", "q2hud_deathscreen", Death);
 
   local function Camera( ply, origin, angles, fov, znear, zfar )
-    if (LocalPlayer():Alive()) or (Q2HUD.Config:DeathScreenEnabled() == 0) or (Q2HUD.Config:IsEnabled() == 0) then return end;
+    if (LocalPlayer():Alive()) or (not Q2HUD.Config:IsEnabled()) or (not Q2HUD.Config:DeathScreenEnabled()) then return end;
 
     local view = {};
 

@@ -1,7 +1,7 @@
 --[[------------
   Q U A K E II
 Heads Up Display
-  Version 1.1.6
+  Version 1.2
     18/08/24
 
 By DyaMetR
@@ -25,10 +25,9 @@ if CLIENT then
 
   -- Paint HUD
   hook.Add("HUDPaint", "q2hud_draw", function()
-    if (Q2HUD.Config ~= nil and Q2HUD.Config:IsEnabled() == 1) then
-      for k, element in pairs(Q2HUD:GetElements()) do
-        element.func();
-      end
+    if (not Q2HUD.Config or not Q2HUD.Config:IsEnabled()) then return end
+    for k, element in pairs(Q2HUD:GetElements()) do
+      element.func();
     end
   end);
 
@@ -42,13 +41,9 @@ if CLIENT then
     ["CHudHistoryResource"] = true
   };
   hook.Add("HUDShouldDraw", "q2hud_hide", function(name)
-    if (Q2HUD.Config ~= nil and Q2HUD.Config:IsEnabled() == 1) then
-      if (name == "CHudDamageIndicator" and Q2HUD.Config:DrawDamageEffect() == 0) then
-        return true;
-      else
-        return not (hide[name] ~= nil);
-      end
-    end
+    if (not Q2HUD.Config or not Q2HUD.Config:IsEnabled()) then return end
+    if (name == "CHudDamageIndicator" and not Q2HUD.Config:DrawDamageEffect()) then return true end
+    return not (hide[name] ~= nil);
   end);
 
   -- Menu

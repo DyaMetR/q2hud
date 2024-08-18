@@ -46,7 +46,7 @@ if CLIENT then
 
   -- Element
   local function PickupOverlay()
-    if (Q2HUD.Config:IsEnabled() == 0 or Q2HUD.Config:DrawPickupEffect() == 0) then return end;
+    if (not Q2HUD.Config:IsEnabled() or not Q2HUD.Config:DrawPickupEffect()) then return end;
     local scale = Q2HUD.Config:GetHUDScale();
     local x, y = (ScrW()/2) - (Q2HUD:GetElement("ammo").size + 28 + 12)*scale, ScrH() - 4*scale - 20*scale;
 
@@ -94,7 +94,7 @@ if CLIENT then
   }
 
   hook.Add("HUDItemPickedUp", "q2hud_pick_item", function(itemName)
-    if (Q2HUD.Config:IsEnabled() == 1 and Q2HUD.Config:DrawPickupEffect() == 1) then
+    if (Q2HUD.Config:IsEnabled() and Q2HUD.Config:DrawPickupEffect()) then
       Q2HUD:DrawPickup(items[itemName].icon, language.GetPhrase(items[itemName].name));
     else
       return;
@@ -102,7 +102,7 @@ if CLIENT then
   end);
 
   hook.Add("HUDWeaponPickedUp", "q2hud_pick_weapon", function(weaponEntity)
-    if (Q2HUD.Config:IsEnabled() == 1 and Q2HUD.Config:DrawPickupEffect() == 1) then
+    if (Q2HUD.Config:IsEnabled() and Q2HUD.Config:DrawPickupEffect()) then
       Q2HUD:DrawPickup(Q2HUD:GetWeaponIcon(weaponEntity), language.GetPhrase(weaponEntity:GetPrintName()));
     else
       return;
@@ -110,7 +110,7 @@ if CLIENT then
   end);
 
   hook.Add("HUDAmmoPickedUp", "q2hud_pick_ammo", function(ammoName, amount)
-    if (Q2HUD.Config:IsEnabled() == 1 and Q2HUD.Config:DrawPickupEffect() == 1) then
+    if (Q2HUD.Config:IsEnabled() and Q2HUD.Config:DrawPickupEffect()) then
       Q2HUD:DrawPickup(Q2HUD:GetRealAmmoIcon(ammoName), Q2HUD:GetRealAmmoName(ammoName));
     else
       return;
@@ -118,7 +118,7 @@ if CLIENT then
   end);
 
   hook.Add("HUDDrawPickupHistory", "q2hud_pick_disable", function()
-    if (Q2HUD.Config:IsEnabled() == 1 and Q2HUD.Config:DrawPickupEffect() == 1) then
+    if (Q2HUD.Config:IsEnabled() and Q2HUD.Config:DrawPickupEffect()) then
       return false;
     else
       return;

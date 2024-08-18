@@ -21,4 +21,5 @@ if CLIENT then
   -- Quake II SWEPs support
   Q2HUD:AddAmmoIcon("Cells", "qammo5");
   Q2HUD:AddAmmoIcon("Slugs", "qammo4");
+  Q2HUD:AddAmmoIcon("MagSlugs", "qammo6");
 end

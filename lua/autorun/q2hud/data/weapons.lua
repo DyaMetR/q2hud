@@ -35,6 +35,8 @@ if CLIENT then
   Q2HUD:AddWeaponClassIcon("weapon_q2_handgrenade", "qammo0");
   Q2HUD:AddWeaponClassIcon("weapon_q2_rocketlauncher", "qrocket");
   Q2HUD:AddWeaponClassIcon("weapon_q2_bfg10k", "qbfg");
+  Q2HUD:AddWeaponClassIcon("weapon_q2_phalanx", "qphallanx");
+  Q2HUD:AddWeaponClassIcon("weapon_q2_ionripper", "qripper");
 
   -- Quake weapon icon references
   Q2HUD.QuakeWeapons.pistol = "qpistol";
@@ -47,6 +49,8 @@ if CLIENT then
   Q2HUD.QuakeWeapons.hyper = "qhyper";
   Q2HUD.QuakeWeapons.gauss = "qgauss";
   Q2HUD.QuakeWeapons.bfg = "qbfg";
+  Q2HUD.QuakeWeapons.phallanx = "qphallanx";
+  Q2HUD.QuakeWeapons.ripper = "qripper";
 
   -- Info for the weapon icon generator
   Q2HUD.WeaponByHoldType = {

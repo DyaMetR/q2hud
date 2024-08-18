@@ -41,7 +41,7 @@ if CLIENT then
   end
 
   local function DamageOverlay()
-    if (Q2HUD.Config:IsEnabled() == 0 or Q2HUD.Config:DrawDamageEffect() == 0) then return end;
+    if (not Q2HUD.Config:IsEnabled() or not Q2HUD.Config:DrawDamageEffect()) then return end;
     local hp = LocalPlayer():Health();
     local ap = LocalPlayer():Armor();
     local x, y, w, h = 0, 0, ScrW(), ScrH();

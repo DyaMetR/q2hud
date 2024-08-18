@@ -12,7 +12,7 @@ if CLIENT then
 
   -- Convars
   Q2HUD.Config.Enabled = CreateClientConVar("q2hud_enabled", 1);
-  Q2HUD.Config.HUDScale = CreateClientConVar("q2hud_scale", 1);
+  Q2HUD.Config.HUDScale = CreateClientConVar("q2hud_scale", 2);
   Q2HUD.Config.ShowClip = CreateClientConVar("q2hud_showclip", 0);
   Q2HUD.Config.DeathScreen = CreateClientConVar("q2hud_deathscreen", 1);
   Q2HUD.Config.ShowPickupEffect = CreateClientConVar("q2hud_showpickup", 1);
@@ -25,7 +25,7 @@ if CLIENT then
     @return {number} enabled
   ]]
   function Q2HUD.Config:IsEnabled()
-    return self.Enabled:GetInt();
+    return self.Enabled:GetBool();
   end
 
   --[[
@@ -41,7 +41,7 @@ if CLIENT then
     @return {number} showClip
   ]]
   function Q2HUD.Config:ShouldShowClip()
-    return self.ShowClip:GetInt();
+    return self.ShowClip:GetBool();
   end
 
   --[[
@@ -49,7 +49,7 @@ if CLIENT then
     @return {number} deathScreen
   ]]
   function Q2HUD.Config:DeathScreenEnabled()
-    return self.DeathScreen:GetInt();
+    return self.DeathScreen:GetBool();
   end
 
   --[[
@@ -57,7 +57,7 @@ if CLIENT then
     @return {number} showPickupEffect
   ]]
   function Q2HUD.Config:DrawPickupEffect()
-    return self.ShowPickupEffect:GetInt();
+    return self.ShowPickupEffect:GetBool();
   end
 
   --[[
@@ -65,7 +65,7 @@ if CLIENT then
     @return {number} showDamageEffect
   ]]
   function Q2HUD.Config:DrawDamageEffect()
-    return self.ShowDamageEffect:GetInt();
+    return self.ShowDamageEffect:GetBool();
   end
 
   --[[
@@ -73,7 +73,7 @@ if CLIENT then
     @return {number} showFrags
   ]]
   function Q2HUD.Config:DrawFragCount()
-    return self.ShowFrags:GetInt();
+    return self.ShowFrags:GetBool();
   end
 
 end

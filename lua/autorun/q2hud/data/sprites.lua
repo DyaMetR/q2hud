@@ -25,7 +25,7 @@ Heads Up Display
   end
 
   -- Quake ammo & weapons
-  for i=0, 5 do
+  for i=0, 13 do
     Q2HUD:AddSprite("qammo"..tostring(i), 32, 32);
   end
 
