@@ -12,7 +12,7 @@ if CLIENT then
 
   -- Convars
   Q2HUD.Config.Enabled = CreateClientConVar("q2hud_enabled", 1);
-  Q2HUD.Config.HUDScale = CreateClientConVar("q2hud_scale", 0);
+  Q2HUD.Config.HUDScale = CreateClientConVar("q2hud_scale", 2);
   Q2HUD.Config.ShowClip = CreateClientConVar("q2hud_showclip", 0);
   Q2HUD.Config.DeathScreen = CreateClientConVar("q2hud_deathscreen", 1);
   Q2HUD.Config.ShowPickupEffect = CreateClientConVar("q2hud_showpickup", 1);
@@ -33,9 +33,7 @@ if CLIENT then
     @return {number} scale
   ]]
   function Q2HUD.Config:GetHUDScale()
-    local scale = self.HUDScale:GetFloat();
-    if scale <= 0 then return math.floor(ScrH() / 200) end
-    return scale
+    return self.HUDScale:GetFloat();
   end
 
   --[[
